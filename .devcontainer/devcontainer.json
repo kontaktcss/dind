@@ -3,9 +3,7 @@
     "build": {
         "dockerfile": "Dockerfile"
     },
-    "mounts": [
-        "source=var-lib-docker,target=/var/lib/docker,type=volume"
-    ],
+
     "forwardPorts": [
         22,
         3389,
@@ -29,21 +27,12 @@
             "label": "QEMU (HTTP/HTTPS)",
             "onAutoForward": "notify"
         }
-    },
-    "capAdd": [
-        "ALL"
     ],
     "securityOpt": [
         "seccomp=unconfined"
     ],
-    "runArgs": [
-        "--device=/dev/kvm",
-        "--device=/dev/net/tun",
-        "--device=/dev/vhost-net"
-    ],
-    "privileged": true,
-    "containerUser": "root",
-    "remoteUser": "root",
+    "containerUser": "vscode",
+    "remoteUser": "vscode",
     "workspaceMount": "source=${localWorkspaceFolder},target=/workspaces/github,type=bind,consistency=cached",
     "workspaceFolder": "/workspaces/github",
     "initializeCommand": "sudo bash .devcontainer/initializeCommand.sh",

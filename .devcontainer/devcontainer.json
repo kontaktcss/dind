@@ -1,5 +1,5 @@
 {
-  "name": "Windows 11 (Canary) + Tailscale (unstable)",
+  "name": "Tailscale + Docker (Codespaces)",
 
   "build": {
     "dockerfile": "Dockerfile"
@@ -11,8 +11,6 @@
 
   "forwardPorts": [
     22,
-    3389,
-    5900,
     8006
   ],
 
@@ -21,16 +19,8 @@
       "label": "GitHub Codespaces (SSH)",
       "onAutoForward": "notify"
     },
-    "3389": {
-      "label": "QEMU (RDP)",
-      "onAutoForward": "notify"
-    },
-    "5900": {
-      "label": "QEMU (VNC)",
-      "onAutoForward": "notify"
-    },
     "8006": {
-      "label": "QEMU (HTTP/HTTPS)",
+      "label": "Docker / HTTP",
       "onAutoForward": "notify"
     }
   },
@@ -42,17 +32,6 @@
   "securityOpt": [
     "seccomp=unconfined"
   ],
-
-  "runArgs": [
-    "--device=/dev/kvm",
-    "--device=/dev/net/tun",
-    "--device=/dev/vhost-net"
-  ],
-
-  "privileged": true,
-
-  "containerUser": "root",
-  "remoteUser": "root",
 
   "workspaceMount": "source=${localWorkspaceFolder},target=/workspaces/github,type=bind,consistency=cached",
   "workspaceFolder": "/workspaces/github",

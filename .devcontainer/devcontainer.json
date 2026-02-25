@@ -1,5 +1,5 @@
 {
-  "name": "Tailscale + Docker (Codespaces)",
+  "name": "Tailscale + Docker",
 
   "build": {
     "dockerfile": "Dockerfile"
@@ -25,13 +25,8 @@
     }
   },
 
-  "capAdd": [
-    "ALL"
-  ],
-
-  "securityOpt": [
-    "seccomp=unconfined"
-  ],
+  "capAdd": ["ALL"],
+  "securityOpt": ["seccomp=unconfined"],
 
   "workspaceMount": "source=${localWorkspaceFolder},target=/workspaces/github,type=bind,consistency=cached",
   "workspaceFolder": "/workspaces/github",
